@@ -1,0 +1,129 @@
+# This file is a shell script that caches the results of configure
+# tests run on this system so they can be shared between configure
+# scripts and configure runs, see configure's option --config-cache.
+# It is not useful on other systems.  If it contains results you don't
+# want to keep, you may remove or edit it.
+#
+# config.status only pays attention to the cache file if you give it
+# the --recheck option to rerun configure.
+#
+# `ac_cv_env_foo' variables (set or unset) will be overriden when
+# loading this file, other *unset* `ac_cv_foo' will be assigned the
+# following values.
+
+ac_cv_build=${ac_cv_build=x86_64-pc-cygwin}
+ac_cv_build_alias=${ac_cv_build_alias=x86_64-pc-cygwin}
+ac_cv_c_bigendian=${ac_cv_c_bigendian=no}
+ac_cv_c_compiler_gnu=${ac_cv_c_compiler_gnu=yes}
+ac_cv_c_const=${ac_cv_c_const=yes}
+ac_cv_c_inline=${ac_cv_c_inline=inline}
+ac_cv_env_CC_set=
+ac_cv_env_CC_value=
+ac_cv_env_CFLAGS_set=
+ac_cv_env_CFLAGS_value=
+ac_cv_env_CPPFLAGS_set=
+ac_cv_env_CPPFLAGS_value=
+ac_cv_env_CPP_set=
+ac_cv_env_CPP_value=
+ac_cv_env_LDFLAGS_set=
+ac_cv_env_LDFLAGS_value=
+ac_cv_env_build_alias_set=
+ac_cv_env_build_alias_value=
+ac_cv_env_host_alias_set=
+ac_cv_env_host_alias_value=
+ac_cv_env_target_alias_set=
+ac_cv_env_target_alias_value=
+ac_cv_exeext=${ac_cv_exeext=.exe}
+ac_cv_file__dev_random=${ac_cv_file__dev_random=yes}
+ac_cv_func_catgets=${ac_cv_func_catgets=yes}
+ac_cv_func_chroot=${ac_cv_func_chroot=yes}
+ac_cv_func_daemon=${ac_cv_func_daemon=yes}
+ac_cv_func_endgrent_r=${ac_cv_func_endgrent_r=no}
+ac_cv_func_endhostent_r=${ac_cv_func_endhostent_r=no}
+ac_cv_func_endnetent_r=${ac_cv_func_endnetent_r=no}
+ac_cv_func_endnetgrent_r=${ac_cv_func_endnetgrent_r=no}
+ac_cv_func_endprotoent_r=${ac_cv_func_endprotoent_r=no}
+ac_cv_func_endpwent_r=${ac_cv_func_endpwent_r=no}
+ac_cv_func_endservent_r=${ac_cv_func_endservent_r=no}
+ac_cv_func_flockfile=${ac_cv_func_flockfile=yes}
+ac_cv_func_gai_strerror=${ac_cv_func_gai_strerror=yes}
+ac_cv_func_getaddrinfo=${ac_cv_func_getaddrinfo=yes}
+ac_cv_func_getc_unlocked=${ac_cv_func_getc_unlocked=yes}
+ac_cv_func_getgrent_r=${ac_cv_func_getgrent_r=no}
+ac_cv_func_getgrgid_r=${ac_cv_func_getgrgid_r=yes}
+ac_cv_func_getgrnam_r=${ac_cv_func_getgrnam_r=yes}
+ac_cv_func_getgrouplist=${ac_cv_func_getgrouplist=yes}
+ac_cv_func_gethostbyname_r=${ac_cv_func_gethostbyname_r=no}
+ac_cv_func_getipnodebyname=${ac_cv_func_getipnodebyname=no}
+ac_cv_func_getnameinfo=${ac_cv_func_getnameinfo=yes}
+ac_cv_func_getnetbyaddr_r=${ac_cv_func_getnetbyaddr_r=no}
+ac_cv_func_getnetgrent_r=${ac_cv_func_getnetgrent_r=no}
+ac_cv_func_getprotoent_r=${ac_cv_func_getprotoent_r=no}
+ac_cv_func_getpwent_r=${ac_cv_func_getpwent_r=no}
+ac_cv_func_getpwnam_r=${ac_cv_func_getpwnam_r=yes}
+ac_cv_func_getpwuid_r=${ac_cv_func_getpwuid_r=yes}
+ac_cv_func_getservent_r=${ac_cv_func_getservent_r=no}
+ac_cv_func_gettimeofday=${ac_cv_func_gettimeofday=yes}
+ac_cv_func_innetgr_r=${ac_cv_func_innetgr_r=no}
+ac_cv_func_pselect=${ac_cv_func_pselect=yes}
+ac_cv_func_pthread_attr_getstacksize=${ac_cv_func_pthread_attr_getstacksize=yes}
+ac_cv_func_setgrent_r=${ac_cv_func_setgrent_r=no}
+ac_cv_func_setgroupent=${ac_cv_func_setgroupent=no}
+ac_cv_func_sethostent_r=${ac_cv_func_sethostent_r=no}
+ac_cv_func_setnetent_r=${ac_cv_func_setnetent_r=no}
+ac_cv_func_setnetgrent_r=${ac_cv_func_setnetgrent_r=no}
+ac_cv_func_setpassent=${ac_cv_func_setpassent=yes}
+ac_cv_func_setpassent_r=${ac_cv_func_setpassent_r=no}
+ac_cv_func_setprotoent_r=${ac_cv_func_setprotoent_r=no}
+ac_cv_func_setpwent_r=${ac_cv_func_setpwent_r=no}
+ac_cv_func_setservent_r=${ac_cv_func_setservent_r=no}
+ac_cv_func_strerror=${ac_cv_func_strerror=yes}
+ac_cv_func_strndup=${ac_cv_func_strndup=yes}
+ac_cv_func_strsep=${ac_cv_func_strsep=yes}
+ac_cv_func_sysconf=${ac_cv_func_sysconf=yes}
+ac_cv_func_sysctlbyname=${ac_cv_func_sysctlbyname=no}
+ac_cv_func_vsnprintf=${ac_cv_func_vsnprintf=yes}
+ac_cv_header_db_h=${ac_cv_header_db_h=no}
+ac_cv_header_fcntl_h=${ac_cv_header_fcntl_h=yes}
+ac_cv_header_inttypes_h=${ac_cv_header_inttypes_h=yes}
+ac_cv_header_linux_capability_h=${ac_cv_header_linux_capability_h=no}
+ac_cv_header_memory_h=${ac_cv_header_memory_h=yes}
+ac_cv_header_paths_h=${ac_cv_header_paths_h=yes}
+ac_cv_header_stdc=${ac_cv_header_stdc=yes}
+ac_cv_header_stdint_h=${ac_cv_header_stdint_h=yes}
+ac_cv_header_stdlib_h=${ac_cv_header_stdlib_h=yes}
+ac_cv_header_string_h=${ac_cv_header_string_h=yes}
+ac_cv_header_strings_h=${ac_cv_header_strings_h=yes}
+ac_cv_header_sys_prctl_h=${ac_cv_header_sys_prctl_h=no}
+ac_cv_header_sys_select_h=${ac_cv_header_sys_select_h=yes}
+ac_cv_header_sys_sockio_h=${ac_cv_header_sys_sockio_h=no}
+ac_cv_header_sys_stat_h=${ac_cv_header_sys_stat_h=yes}
+ac_cv_header_sys_sysctl_h=${ac_cv_header_sys_sysctl_h=no}
+ac_cv_header_sys_time_h=${ac_cv_header_sys_time_h=yes}
+ac_cv_header_sys_timers_h=${ac_cv_header_sys_timers_h=no}
+ac_cv_header_sys_types_h=${ac_cv_header_sys_types_h=yes}
+ac_cv_header_time=${ac_cv_header_time=yes}
+ac_cv_header_unistd_h=${ac_cv_header_unistd_h=yes}
+ac_cv_host=${ac_cv_host=x86_64-pc-cygwin}
+ac_cv_host_alias=${ac_cv_host_alias=x86_64-pc-cygwin}
+ac_cv_lib_c_sigwait=${ac_cv_lib_c_sigwait=yes}
+ac_cv_lib_d4r_gethostbyname_r=${ac_cv_lib_d4r_gethostbyname_r=no}
+ac_cv_lib_nsl_inet_ntoa=${ac_cv_lib_nsl_inet_ntoa=no}
+ac_cv_lib_pthread_pthread_create=${ac_cv_lib_pthread_pthread_create=yes}
+ac_cv_lib_socket_socket=${ac_cv_lib_socket_socket=no}
+ac_cv_objext=${ac_cv_objext=o}
+ac_cv_path_AR=${ac_cv_path_AR=/usr/bin/ar}
+ac_cv_path_PERL=${ac_cv_path_PERL=/usr/bin/perl}
+ac_cv_path_install=${ac_cv_path_install='/usr/bin/install -c'}
+ac_cv_prog_CC=${ac_cv_prog_CC=gcc}
+ac_cv_prog_CPP=${ac_cv_prog_CPP='gcc -E'}
+ac_cv_prog_RANLIB=${ac_cv_prog_RANLIB=ranlib}
+ac_cv_prog_cc_cross=${ac_cv_prog_cc_cross=no}
+ac_cv_prog_cc_g=${ac_cv_prog_cc_g=yes}
+ac_cv_prog_cc_stdc=${ac_cv_prog_cc_stdc=}
+ac_cv_prog_cc_works=${ac_cv_prog_cc_works=yes}
+ac_cv_prog_gcc=${ac_cv_prog_gcc=yes}
+ac_cv_prog_make_make_set=${ac_cv_prog_make_make_set=no}
+ac_cv_type_size_t=${ac_cv_type_size_t=yes}
+ac_cv_type_ssize_t=${ac_cv_type_ssize_t=yes}
+lt_cv_sys_path_separator=${lt_cv_sys_path_separator=:}

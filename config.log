@@ -1,0 +1,274 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:936: checking host system type
+configure:958: checking whether make sets ${MAKE}
+configure:987: checking for ranlib
+configure:1026: checking for a BSD compatible install
+configure:1087: checking for ar
+configure:1146: checking for etags
+configure:1146: checking for emacs-etags
+configure:1206: checking for perl5
+configure:1353: checking for gcc
+configure:1466: checking whether the C compiler (gcc  ) works
+configure:1482: gcc -o conftest    conftest.c  1>&5
+configure:1479:1: warning: return type defaults to 'int' [-Wimplicit-int]
+ main(){return(0);}
+ ^~~~
+configure:1508: checking whether the C compiler (gcc  ) is a cross-compiler
+configure:1513: checking whether we are using GNU C
+configure:1541: checking whether gcc accepts -g
+configure:1574: checking how to run the C preprocessor
+configure:1654: checking for ANSI C header files
+configure:1762: checking for fcntl.h
+configure:1762: checking for sys/time.h
+configure:1762: checking for unistd.h
+configure:1762: checking for sys/sockio.h
+configure:1762: checking for sys/select.h
+configure:1762: checking for sys/sysctl.h
+configure:1800: checking for working const
+configure:1875: checking for inline
+configure:1915: checking for sysctlbyname
+configure:1971: checking for static inline breakage
+configure:1990: gcc -c -g -O2  conftest.c 1>&5
+configure: In function 'main':
+configure:1977:3: warning: implicit declaration of function 'foo1' [-Wimplicit-function-declaration]
+   foo1();
+   ^~~~
+configure: At top level:
+configure:1980:20: error: static declaration of 'foo1' follows non-static declaration
+  static inline int foo1() {
+                    ^~~~
+configure:1977:3: note: previous implicit declaration of 'foo1' was here
+   foo1();
+   ^~~~
+configure: failed program was:
+#line 1973 "configure"
+#include "confdefs.h"
+
+int main() {
+
+		foo1();
+	}
+
+	static inline int foo1() {
+		return 0;
+	}
+
+	static inline int foo2() {
+		return foo1();
+	
+; return 0; }
+configure:2006: checking for size_t
+configure:2039: checking for ssize_t
+configure:2072: checking whether time.h and sys/time.h may both be included
+configure:2107: checking for long long
+configure:2116: gcc -c -g -O2  conftest.c 1>&5
+configure:2136: checking if unistd.h or sys/types.h defines fd_set
+configure:2147: gcc -c -g -O2  conftest.c 1>&5
+configure:2189: checking whether byte ordering is bigendian
+configure:2293: checking for Postgres DLZ driver
+configure:2346: checking for MySQL DLZ driver
+configure:2398: checking for Berkeley DB DLZ driver
+configure:2504: checking for file system DLZ driver
+configure:2534: checking for LDAP DLZ driver
+configure:2587: checking for ODBC DLZ driver
+configure:2640: checking for stub DLZ driver
+configure:2670: checking for DLZ
+configure:2688: checking for OpenSSL library
+configure:2988: checking for random device
+configure:3012: checking for /dev/random
+configure:3064: checking whether to build with thread support
+configure:3876: checking for flockfile
+configure:3927: checking for getc_unlocked
+configure:3982: checking whether to build with threads
+configure:4058: checking for catgets
+configure:4124: checking for socket in -lsocket
+configure:4171: checking for inet_ntoa in -lnsl
+configure:4224: checking whether to use purify
+configure:8231: checking for IPv6 structures
+configure:8243: gcc -c -g -O2  conftest.c 1>&5
+configure:8261: checking for Kame IPv6 support
+configure:8352: checking for in6_addr
+configure:8367: gcc -c -g -O2  conftest.c 1>&5
+configure:8385: checking for in6addr_any
+configure:8401: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:8417: checking for in6addr_loopback
+configure:8433: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:8449: checking for sin6_scope_id in struct sockaddr_in6
+configure:8464: gcc -c -g -O2  conftest.c 1>&5
+configure:8479: checking for in6_pktinfo
+configure:8494: gcc -c -g -O2  conftest.c 1>&5
+configure:8549: checking for inet_ntop with IPv6 support
+configure:8564: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:8560:1: warning: return type defaults to 'int' [-Wimplicit-int]
+ main() {
+ ^~~~
+configure:8587: checking for working inet_pton with IPv6 support
+configure:8604: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:8599:1: warning: return type defaults to 'int' [-Wimplicit-int]
+ main() { char a[16]; return (inet_pton(AF_INET, "1.2.3", a) == 1 ? 1 :
+ ^~~~
+configure: failed program was:
+#line 8593 "configure"
+#include "confdefs.h"
+
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+main() { char a[16]; return (inet_pton(AF_INET, "1.2.3", a) == 1 ? 1 :
+			     inet_pton(AF_INET, "1.2.3.04", a) == 1 ? 1 : 
+			     (inet_pton(AF_INET6, "::1.2.3.4", a) != 1)); }
+configure:8622: checking for inet_aton
+configure:8634: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:8667: checking for sa_len in struct sockaddr
+configure:8678: gcc -c -g -O2  conftest.c 1>&5
+configure: In function 'main':
+configure:8674:23: error: 'struct sockaddr' has no member named 'sa_len'
+ struct sockaddr sa; sa.sa_len = 0; return (0);
+                       ^
+configure: failed program was:
+#line 8669 "configure"
+#include "confdefs.h"
+
+#include <sys/types.h>
+#include <sys/socket.h>
+int main() {
+struct sockaddr sa; sa.sa_len = 0; return (0);
+; return 0; }
+configure:8699: checking for struct msghdr flavor
+configure:8710: gcc -c -g -O2  conftest.c 1>&5
+configure:8728: checking for type in_port_t
+configure:8739: gcc -c -g -O2  conftest.c 1>&5
+configure:8757: checking for struct addrinfo
+configure:8767: gcc -c -g -O2  conftest.c 1>&5
+configure:8789: checking for struct rrsetinfo
+configure:8799: gcc -c -g -O2  conftest.c 1>&5
+configure: In function 'main':
+configure:8795:18: error: storage size of 'r' isn't known
+ struct rrsetinfo r; return (0);
+                  ^
+configure: failed program was:
+#line 8791 "configure"
+#include "confdefs.h"
+
+#include <netdb.h>
+int main() {
+struct rrsetinfo r; return (0);
+; return 0; }
+configure:8814: checking for int sethostent
+configure:8824: gcc -c -g -O2  conftest.c 1>&5
+configure: In function 'main':
+configure:8820:9: error: void value not ignored as it ought to be
+ int i = sethostent(0); return(0);
+         ^~~~~~~~~~
+configure: failed program was:
+#line 8816 "configure"
+#include "confdefs.h"
+
+#include <netdb.h>
+int main() {
+int i = sethostent(0); return(0);
+; return 0; }
+configure:8839: checking for int endhostent
+configure:8849: gcc -c -g -O2  conftest.c 1>&5
+configure: In function 'main':
+configure:8845:9: error: void value not ignored as it ought to be
+ int i = endhostent(); return(0);
+         ^~~~~~~~~~
+configure: failed program was:
+#line 8841 "configure"
+#include "confdefs.h"
+
+#include <netdb.h>
+int main() {
+int i = endhostent(); return(0);
+; return 0; }
+configure:8864: checking for getnetbyaddr(in_addr_t, ...)
+configure:8875: gcc -c -g -O2  conftest.c 1>&5
+configure:8890: checking for int setnetent
+configure:8900: gcc -c -g -O2  conftest.c 1>&5
+configure: In function 'main':
+configure:8896:9: error: void value not ignored as it ought to be
+ int i = setnetent(0); return(0);
+         ^~~~~~~~~
+configure: failed program was:
+#line 8892 "configure"
+#include "confdefs.h"
+
+#include <netdb.h>
+int main() {
+int i = setnetent(0); return(0);
+; return 0; }
+configure:8915: checking for int endnetent
+configure:8925: gcc -c -g -O2  conftest.c 1>&5
+configure: In function 'main':
+configure:8921:9: error: void value not ignored as it ought to be
+ int i = endnetent(); return(0);
+         ^~~~~~~~~
+configure: failed program was:
+#line 8917 "configure"
+#include "confdefs.h"
+
+#include <netdb.h>
+int main() {
+int i = endnetent(); return(0);
+; return 0; }
+configure:8940: checking for gethostbyaddr(const void *, size_t, ...)
+configure:8951: gcc -c -g -O2  conftest.c 1>&5
+configure:8945:17: error: conflicting types for 'gethostbyaddr'
+ struct hostent *gethostbyaddr(const void *, size_t, int);
+                 ^~~~~~~~~~~~~
+In file included from configure:8944:0:
+/usr/include/netdb.h:231:17: note: previous declaration of 'gethostbyaddr' was here
+ struct hostent *gethostbyaddr (const void *, socklen_t, int);
+                 ^~~~~~~~~~~~~
+configure: failed program was:
+#line 8942 "configure"
+#include "confdefs.h"
+
+#include <netdb.h>
+struct hostent *gethostbyaddr(const void *, size_t, int);
+int main() {
+return(0);
+; return 0; }
+configure:8966: checking for h_errno in netdb.h
+configure:8976: gcc -c -g -O2  conftest.c 1>&5
+configure:8991: checking for getipnodebyname
+configure:9040: checking for getnameinfo
+configure:9089: checking for getaddrinfo
+configure:9142: checking for gai_strerror
+configure:9200: checking for interface list sysctl
+configure:9205:10: fatal error: sys/sysctl.h: No such file or directory
+ #include <sys/sysctl.h>
+          ^~~~~~~~~~~~~~
+compilation terminated.
+configure:9239: checking for correctly declared strsep()
+configure:9248: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:9260: checking for vsnprintf
+configure:9313: checking for strerror
+configure:9375: checking printf format modifier for 64-bit integers
+configure:9385: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:9382:1: warning: return type defaults to 'int' [-Wimplicit-int]
+ main() { exit(!(sizeof(long long int) == sizeof(long int))); }
+ ^~~~
+configure: In function 'main':
+configure:9382:10: warning: implicit declaration of function 'exit' [-Wimplicit-function-declaration]
+ main() { exit(!(sizeof(long long int) == sizeof(long int))); }
+          ^~~~
+configure:9382:10: warning: incompatible implicit declaration of built-in function 'exit'
+configure:9382:10: note: include '<stdlib.h>' or provide a declaration of 'exit'
+configure:9405: checking for chroot
+configure:9467: checking for linux/capability.h
+configure:9511: checking for sys/prctl.h
+configure:9552: checking for type rlim_t
+configure:9564: gcc -c -g -O2  conftest.c 1>&5
+configure:9754: checking for openjade
+configure:9801: checking for jadetex
+configure:9844: checking for pdfjadetex
+configure:9900: checking for catalog
+configure:9942: checking for html/docbook.dsl
+configure:9963: checking for print/docbook.dsl
+configure:9989: checking for docbook/dsssl/modular/dtds/decls/xml.dcl
+configure:10015: checking for docbook2X/docbook2man-spec.pl
