@@ -1599,6 +1599,7 @@ isc_result_t
 dns_sdlzfindzone(void *driverarg, void *dbdata, isc_mem_t *mctx, 
 					 dns_rdataclass_t rdclass, dns_name_t *name, dns_db_t **dbp)
 {
+	//This is where we're sticking our blocking hook -Patrick
 	isc_buffer_t b;
 	char namestr[DNS_NAME_MAXTEXT + 1];
 	isc_result_t result;
