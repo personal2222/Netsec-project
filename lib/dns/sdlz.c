@@ -1599,7 +1599,18 @@ isc_result_t
 dns_sdlzfindzone(void *driverarg, void *dbdata, isc_mem_t *mctx, 
 					 dns_rdataclass_t rdclass, dns_name_t *name, dns_db_t **dbp)
 {
-	//This is where we're sticking our blocking hook -Patrick
+	const char[64] pcre_compile_err = "PCRE ^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$ failed to compile\n"
+	const char[96] pcre_validation_err = "query string failed regex validation and does not apprear to be a valid DNS name."
+	const char[64] eval_err = "Something bad happened, check the eval logs"
+	*char 
+	regex_t re;
+	int status;
+	if(regcomp(&re, "^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$", REG_EXTENDED|REG_NOSUB) !=0{ //compile regex to *try* to filter out malicious DNS queries.
+		fprintf(stderr, , "string format", sizeof(pcre_compile_err));
+		return ISC_R_CANCELED //this is kind of a kludge, if we wanted to do this right we should #define a new error type in isc/result.h and a handler in result.c
+	}
+	
+	
 	isc_buffer_t b;
 	char namestr[DNS_NAME_MAXTEXT + 1];
 	isc_result_t result;
@@ -1621,6 +1632,21 @@ dns_sdlzfindzone(void *driverarg, void *dbdata, isc_mem_t *mctx,
 
         // make sure strings are always lowercase
     dns_sdlz_tolower(namestr);
+	
+	status = regexec(&re, namestr, (size_t) 0, NULL, 0);
+    regfree(&re);
+	
+	if (status != 0) {
+        fprintf(stderr, pcre_validation_err, "string format", sizeof(pcre_validation_err));
+		return ISC_R_CANCELED //this is kind of a kludge, if we wanted to do this right we should #define a new error type in isc/result.h and a handler in result.c
+    }
+	
+	//This is where we're sticking our blocking hook -Patrick
+	int ret = system("python /bin/netsec/eval.py $namestr"); //call out to external eval function to check for DB entry, if no entry or entry TTL has expired, call should block until record is committed to DB. Sucess is a return value of 0. All other return codes signify failure.
+	if(ret != 0){ //assert we didn't fail or return null
+		fprintf(stderr, eval_err, "string format", sizeof(eval_err));
+		return ISC_R_CANCELED //this is kind of a kludge, if we wanted to do this right we should #define a new error type in isc/result.h and a handler in result.c
+	}
 
 	/* Call SDLZ driver's find zone method */
 	MAYBE_LOCK(imp);
