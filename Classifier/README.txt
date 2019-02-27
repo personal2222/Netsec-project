@@ -1,0 +1,4 @@
+Required libraries 
+
+requests
+json
