@@ -1,0 +1,23 @@
+version: '3.2'
+services:
+    pgdb:
+        image: postgres:10
+        env_file:
+            - pg-vars.env
+        ports:
+            - "5432:5432"
+        volumes:
+            - type: volume
+              source: data-volume
+              target: /var/lib/postgresql/data
+            - type: bind
+              source: ./db
+              target: "/docker-entrypoint-initdb.d/"
+        networks:
+            - pgnet
+
+networks:
+    pgnet:
+
+volumes:
+    data-volume:
