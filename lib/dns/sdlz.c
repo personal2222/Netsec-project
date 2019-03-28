@@ -1,11 +1,11 @@
 /*
  * Copyright (C) 2002 Stichting NLnet, Netherlands, stichting@nlnet.nl.
- * 
+ *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the
  * above copyright notice and this permission notice appear in all
  * copies.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS" AND STICHTING NLNET
  * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL
@@ -14,15 +14,15 @@
  * OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
  * OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE
  * USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ *
  * The development of Dynamically Loadable Zones (DLZ) for Bind 9 was
  * conceived and contributed by Rob Butler.
- * 
+ *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the
  * above copyright notice and this permission notice appear in all
  * copies.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS" AND ROB BUTLER
  * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL
@@ -85,6 +85,10 @@
 
 #include "rdatalist_p.h"
 
+#include <sys/types.h>
+#include <regex.h>
+#include <stdlib.h>
+
 /***
  *** Private Types
  ***/
@@ -100,7 +104,7 @@ struct dns_sdlzimplementation {
 
 struct dns_sdlz_db {
     /* Unlocked */
-	dns_db_t					common;  
+	dns_db_t					common;
 	void						*dbdata;
 	dns_sdlzimplementation_t	*dlzimp;
 	isc_mutex_t					refcnt_lock;
@@ -169,7 +173,7 @@ dns_sdlzcreateDBP(isc_mem_t *mctx, void *driverarg, void *dbdata,
 	  dns_name_t *name, dns_rdataclass_t rdclass, dns_db_t **dbp);
 
 isc_result_t
-dns_sdlzallowzonexfr(void *driverarg, void *dbdata, isc_mem_t *mctx, 
+dns_sdlzallowzonexfr(void *driverarg, void *dbdata, isc_mem_t *mctx,
 			 dns_rdataclass_t rdclass, dns_name_t *name,
         	         isc_sockaddr_t *clientaddr, dns_db_t **dbp);
 
@@ -181,10 +185,10 @@ void
 dns_sdlzdestroy(void *driverdata, void **dbdata);
 
 isc_result_t
-dns_sdlzfindzone(void *driverarg, void *dbdata, isc_mem_t *mctx, 
+dns_sdlzfindzone(void *driverarg, void *dbdata, isc_mem_t *mctx,
 	 dns_rdataclass_t rdclass, dns_name_t *name, dns_db_t **dbp);
 
-static int dummy;              
+static int dummy;
 
 static isc_result_t findrdataset(dns_db_t *db, dns_dbnode_t *node,
 				 dns_dbversion_t *version,
@@ -259,7 +263,7 @@ static dns_rdatasetitermethods_t rdatasetiter_methods = {
 /***
  *** Functions
  ***/
-    
+
     /* Converts the input string to lowercase, in place. */
 
 void
@@ -334,7 +338,7 @@ dns_sdlz_putrr(dns_sdlzlookup_t *lookup, const char *type, dns_ttl_t ttl,
 		ISC_LIST_INIT(rdatalist->rdata);
 		ISC_LINK_INIT(rdatalist, link);
 		ISC_LIST_APPEND(lookup->lists, rdatalist, link);
-	} else 
+	} else
 		if (rdatalist->ttl != ttl)
 			return (DNS_R_BADTTL);
 
@@ -503,7 +507,7 @@ destroy(dns_sdlz_db_t *sdlz) {
 
 	sdlz->common.magic = 0;
 	sdlz->common.impmagic = 0;
-	
+
 	isc_mutex_destroy(&sdlz->refcnt_lock);
 
 	dns_name_free(&sdlz->common.origin, mctx);
@@ -573,7 +577,7 @@ newversion(dns_db_t *db, dns_dbversion_t **versionp) {
 }
 
 static void
-attachversion(dns_db_t *db, dns_dbversion_t *source, 
+attachversion(dns_db_t *db, dns_dbversion_t *source,
 	      dns_dbversion_t **targetp)
 {
 	REQUIRE(source != NULL && source == (void *) &dummy);
@@ -748,7 +752,7 @@ findnode(dns_db_t *db, dns_name_t *name, isc_boolean_t create,
 			return (result);
 		}
 	}
-	
+
 	*nodep = node;
 	return (ISC_R_SUCCESS);
 }
@@ -1084,7 +1088,7 @@ allrdatasets(dns_db_t *db, dns_dbnode_t *node, dns_dbversion_t *version,
 	sdlz_rdatasetiter_t *iterator;
 
 	REQUIRE(version == NULL || version == &dummy);
-	
+
 	UNUSED(version);
 	UNUSED(now);
 
@@ -1409,10 +1413,10 @@ rdatasetiter_current(dns_rdatasetiter_t *iterator, dns_rdataset_t *rdataset) {
 
 
 /*
- * SDLZ core methods. This is the core of the new DLZ functionality.  
+ * SDLZ core methods. This is the core of the new DLZ functionality.
  */
-	
-/* 
+
+/*
  * Build a 'bind' database driver structure to be returned by
  * either the find zone or the allow zone transfer method.
  * This method is only available in this source file, it is
@@ -1479,7 +1483,7 @@ mem_cleanup:
 }
 
 isc_result_t
-dns_sdlzallowzonexfr(void *driverarg, void *dbdata, isc_mem_t *mctx, 
+dns_sdlzallowzonexfr(void *driverarg, void *dbdata, isc_mem_t *mctx,
 					 dns_rdataclass_t rdclass, dns_name_t *name,
                      isc_sockaddr_t *clientaddr, dns_db_t **dbp)
 {
@@ -1527,7 +1531,7 @@ dns_sdlzallowzonexfr(void *driverarg, void *dbdata, isc_mem_t *mctx,
 		 /* if zone is supported and transfers allowed build a 'bind' database driver */
 		if(result == ISC_R_SUCCESS)
 			result = dns_sdlzcreateDBP(mctx, driverarg, dbdata, name, rdclass, dbp);
-		return result;		
+		return result;
 	}
 
 	return ISC_R_NOTIMPLEMENTED;
@@ -1552,7 +1556,7 @@ dns_sdlzcreate(isc_mem_t *mctx, const char *dlzname, unsigned int argc,
 	UNUSED(mctx);
 
 	imp = driverarg;
-	
+
 	/* If the create method exists, call it. */
 	if(imp->methods->create != NULL){
 		MAYBE_LOCK(imp);
@@ -1577,7 +1581,7 @@ dns_sdlzcreate(isc_mem_t *mctx, const char *dlzname, unsigned int argc,
 void
 dns_sdlzdestroy(void *driverdata, void **dbdata)
 {
-	
+
 	dns_sdlzimplementation_t *imp;
 
 	/* Write debugging message to log */
@@ -1596,21 +1600,22 @@ dns_sdlzdestroy(void *driverdata, void **dbdata)
 }
 
 isc_result_t
-dns_sdlzfindzone(void *driverarg, void *dbdata, isc_mem_t *mctx, 
+dns_sdlzfindzone(void *driverarg, void *dbdata, isc_mem_t *mctx,
 					 dns_rdataclass_t rdclass, dns_name_t *name, dns_db_t **dbp)
 {
-	const char[64] pcre_compile_err = "PCRE ^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$ failed to compile\n"
-	const char[96] pcre_validation_err = "query string failed regex validation and does not apprear to be a valid DNS name."
-	const char[64] eval_err = "Something bad happened, check the eval logs"
-	*char 
+	const char *pcre_compile_err =  "PCRE ^([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}$ failed to compile\n";
+	const char *pcre_validation_err = "query string failed regex validation and does not apprear to be a valid DNS name.";
+	const char *eval_err = "Something bad happened, check the eval logs";
+
+	//*char
 	regex_t re;
 	int status;
-	if(regcomp(&re, "^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$", REG_EXTENDED|REG_NOSUB) !=0{ //compile regex to *try* to filter out malicious DNS queries.
-		fprintf(stderr, , "string format", sizeof(pcre_compile_err));
-		return ISC_R_CANCELED //this is kind of a kludge, if we wanted to do this right we should #define a new error type in isc/result.h and a handler in result.c
+	if(regcomp(&re, "^([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}$", REG_EXTENDED|REG_NOSUB) !=0){ //compile regex to *try* to filter out malicious DNS queries.
+		//fprintf(stderr,"Regular expression did not compile","string format", sizeof(pcre_compile_err));
+		return ISC_R_CANCELED; //this is kind of a kludge, if we wanted to do this right we should #define a new error type in isc/result.h and a handler in result.c
 	}
-	
-	
+
+
 	isc_buffer_t b;
 	char namestr[DNS_NAME_MAXTEXT + 1];
 	isc_result_t result;
@@ -1632,20 +1637,20 @@ dns_sdlzfindzone(void *driverarg, void *dbdata, isc_mem_t *mctx,
 
         // make sure strings are always lowercase
     dns_sdlz_tolower(namestr);
-	
+
 	status = regexec(&re, namestr, (size_t) 0, NULL, 0);
     regfree(&re);
-	
+
 	if (status != 0) {
         fprintf(stderr, pcre_validation_err, "string format", sizeof(pcre_validation_err));
-		return ISC_R_CANCELED //this is kind of a kludge, if we wanted to do this right we should #define a new error type in isc/result.h and a handler in result.c
+		return ISC_R_CANCELED; //this is kind of a kludge, if we wanted to do this right we should #define a new error type in isc/result.h and a handler in result.c
     }
-	
+
 	//This is where we're sticking our blocking hook -Patrick
 	int ret = system("python /bin/netsec/eval.py $namestr"); //call out to external eval function to check for DB entry, if no entry or entry TTL has expired, call should block until record is committed to DB. Sucess is a return value of 0. All other return codes signify failure.
 	if(ret != 0){ //assert we didn't fail or return null
 		fprintf(stderr, eval_err, "string format", sizeof(eval_err));
-		return ISC_R_CANCELED //this is kind of a kludge, if we wanted to do this right we should #define a new error type in isc/result.h and a handler in result.c
+		return ISC_R_CANCELED; //this is kind of a kludge, if we wanted to do this right we should #define a new error type in isc/result.h and a handler in result.c
 	}
 
 	/* Call SDLZ driver's find zone method */
@@ -1692,11 +1697,11 @@ dns_sdlzregister(const char *drivername, const dns_sdlzmethods_t *methods,
 	imp = isc_mem_get(mctx, sizeof(dns_sdlzimplementation_t));
 	if (imp == NULL)
 		return (ISC_R_NOMEMORY);
-	
+
 	/* Make sure memory region is set to all 0's */
 	memset(imp, 0, sizeof(dns_sdlzimplementation_t));
 
-	/* Store the data passed into this method */ 
+	/* Store the data passed into this method */
 	imp->methods = methods;
 	imp->driverarg = driverarg;
 	imp->flags = flags;
@@ -1704,7 +1709,7 @@ dns_sdlzregister(const char *drivername, const dns_sdlzmethods_t *methods,
 
 	/* attach the new sdlz_implementation object to a memory context */
 	isc_mem_attach(mctx, &imp->mctx);
-	
+
 	/*
 	 * initialize the driver lock, error if we cannot
 	 * (used if a driver does not support multiple threads)
@@ -1727,7 +1732,7 @@ dns_sdlzregister(const char *drivername, const dns_sdlzmethods_t *methods,
 	 */
 	result = dns_dlzregister(drivername, &sdlzmethods, imp, mctx,
 				 &imp->dlz_imp);
-	
+
 	/* if registration fails, cleanup and get outta here. */
 	if (result != ISC_R_SUCCESS)
 		goto cleanup_mutex;
@@ -1785,4 +1790,3 @@ dns_sdlzunregister(dns_sdlzimplementation_t **sdlzimp) {
 }
 
 #endif
-
