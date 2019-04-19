@@ -15,14 +15,13 @@ def classify(url):
     f = np.array(getFeatures(url))
     clf = load('AlexaDecisionTree.joblib')
     out = clf.predict(f.reshape(1,-1))
-    #return (not out[0])
-    return (out,f)
+    return not out
 
 @app.route("/")
 def respond():
     #ip_result = check_IP(request.args.get('ip', default = '', type = str))
     result = classify(request.args.get('url', default = '', type = str))
-    return str((str(result),request.args.get('url', default = '', type = str)))
+    return str(result)
 
 
 if __name__ == '__main__':
