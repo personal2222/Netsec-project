@@ -19,7 +19,7 @@ To test the classifier:
 * run Classifier2/URL_Classify.py
 * visit http://0.0.0.0:5000/?url="YOUR URL HERE"
   
-Required Python packages:  
+# Required Python packages:  
 requests  
 Flask  
 whois    
