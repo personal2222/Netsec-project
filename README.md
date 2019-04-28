@@ -1,6 +1,7 @@
   
   
-The proxy code is located in the Webby directory
+# Proxy Instructions
+The code for the proxy is in the Webby directory
 * download/install [nvm](https://github.com/creationix/nvm)
 * use nvm to install latest version of node `nvm install node`
 * install dependencies with `npm install`
@@ -11,7 +12,7 @@ The proxy code is located in the Webby directory
 * run URL_Classify.py in the Classifier2 directory. Make sure the require python packages below are installed.
 * visit the interweb
 
-Classification analysis
+# Classification analysis  
 Classifier2/classifier notebook.ipynb contains code for the analysis we performed on the classifier. Make sure the other files in Classifier2 are in the same directory when you try to run it.  
   
 Required Python packages:  
