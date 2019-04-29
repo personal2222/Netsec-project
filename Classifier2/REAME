@@ -1,0 +1,12 @@
+pip install the modules in requirements.txt
+
+Run URL_Classify.py
+
+Visit http://0.0.0.0:5000/?url="YOUR QUERY HERE"
+
+Test Examples:
+Bad(True)
+http://0.0.0.0:5000/?url=buzbuq.ru
+
+Good(False)
+http://0.0.0.0:5000/?url=bing.com

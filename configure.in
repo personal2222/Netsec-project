@@ -370,7 +370,7 @@ case "$use_dlz_mysql" in
                 DLZ_MYSQL_INC="-I$use_dlz_mysql/include/mysql"
                 DLZ_MYSQL_LIBS="-L$use_dlz_mysql/lib/mysql -lmysqlclient -lz -lcrypt -lnsl -lm"
                 AC_MSG_RESULT(
-[using mysql from $use_dlz_mysql/lib/mysql and $use_dlz_mysql/include/mysql])                
+[using mysql from $use_dlz_mysql/lib/mysql and $use_dlz_mysql/include/mysql])
 		;;
 esac
 
@@ -408,8 +408,8 @@ case "$use_dlz_bdb" in
 				then
                                         use_dlz_bdb=$d
 					DLZ_BDB_INCDIR=$use_dlz_bdb/include
-                                        DLB_BDB_LIB="-ldb"                                        
-                                        break                                  
+                                        DLB_BDB_LIB="-ldb"
+                                        break
 				fi
 			done
 			if test "$use_dlz_bdb" = "yes"
@@ -425,7 +425,7 @@ case "$use_dlz_bdb" in
                         # set both to yes, so we can check them later
 		        DLZ_BDB_INCDIR="yes"
                         DLZ_BDB_LIB="yes"
-                        
+
                         # check other locations for includes.
                         bdb_incdirs="/ /db41/ /db4/ /db/"
 			for d in $bdb_incdirs
@@ -436,7 +436,7 @@ case "$use_dlz_bdb" in
                                         break
 				fi
 			done
-                        
+
                         if test "$DLZ_BDB_INCDIR" = "yes"
                         then
                                 AC_MSG_RESULT(not found)
@@ -444,7 +444,7 @@ case "$use_dlz_bdb" in
 [Berkeley DB header was not found in $use_dlz_bdb/include, \
 $use_dlz_bdb/include/db41, $use_dlz_bdb/include/db4 or $use_dlz_bdb/include/db])
                         fi
-                        
+
 			# look for libname other than libdb.so
                         bdb_libnames="db41 db-4.1 db"
 			for d in $bdb_libnames
@@ -454,14 +454,14 @@ $use_dlz_bdb/include/db41, $use_dlz_bdb/include/db4 or $use_dlz_bdb/include/db])
 					DLZ_BDB_LIB="-l${d}"
 				fi
 			done
-                        
+
                         if test "$DLZ_BDB_LIB" = "yes"
                         then
                                 AC_MSG_RESULT(not found)
                                 AC_MSG_ERROR(
 [Berkeley DB library libdb41.so, libdb-4.1.so or libdb.so could not be found \
 in $use_dlz_bdb/lib])
-                        fi                        
+                        fi
 
 
                 else
@@ -470,12 +470,12 @@ in $use_dlz_bdb/lib])
 [Path $use_dlz_bdb does not exist])
 
 		fi
-                
+
                 USE_DLZ_BDB='-DDLZ_BDB'
                 DLZ_BDB_INC="-I$DLZ_BDB_INCDIR"
                 DLZ_BDB_LIBS="-L${use_dlz_bdb}/lib ${DLZ_BDB_LIB}"
                 AC_MSG_RESULT(
-[using Berkeley DB from $use_dlz_bdb/lib and $DLZ_BDB_INCDIR])                
+[using Berkeley DB from $use_dlz_bdb/lib and $DLZ_BDB_INCDIR])
 		;;
 esac
 
@@ -609,7 +609,7 @@ AC_SUBST(DLZ_ODBC_INC)
 AC_SUBST(DLZ_ODBC_LIBS)
 AC_SUBST(USE_DLZ_ODBC)
 
-                                                                                     
+
 #
 # was --with-dlz-stub specified?
 #
@@ -731,7 +731,7 @@ shared library configuration (e.g., LD_LIBRARY_PATH).)],
 		],
 		[AC_MSG_RESULT(assuming it does work on target platform)]
 		)
-		 
+
 #
 #	OpenSSLDie is new with CERT CS-2002-23.  If we see it we have may
 #	have a patched library otherwise check that we are greater than
@@ -909,7 +909,7 @@ case $host in
    	# Threads are disabled on Linux by default because most
 	# Linux kernels produce unusable core dumps from multithreaded
 	# programs, and because of limitations in setuid().
-	use_threads=false ;;	
+	use_threads=false ;;
 *)
 	use_threads=false ;;
 esac
@@ -935,7 +935,7 @@ if $use_threads
 then
 	AC_MSG_RESULT(yes)
 else
-	AC_MSG_RESULT(no)	
+	AC_MSG_RESULT(no)
 fi
 
 if $use_threads
@@ -1120,7 +1120,7 @@ AC_SUBST(ISC_THREAD_DIR)
 AC_CHECK_FUNC(flockfile, AC_DEFINE(HAVE_FLOCKFILE),)
 AC_CHECK_FUNC(getc_unlocked, AC_DEFINE(HAVE_GETCUNLOCKED),)
 
-# 
+#
 # Indicate what the final decision was regarding threads.
 #
 AC_MSG_CHECKING(whether to build with threads)
@@ -1130,7 +1130,7 @@ else
 	AC_MSG_RESULT(no)
 fi
 
-# 
+#
 # End of pthreads stuff.
 #
 
@@ -1583,7 +1583,7 @@ AC_TRY_RUN([
 #include <netinet/in.h>
 #include <arpa/inet.h>
 main() { char a[16]; return (inet_pton(AF_INET, "1.2.3", a) == 1 ? 1 :
-			     inet_pton(AF_INET, "1.2.3.04", a) == 1 ? 1 : 
+			     inet_pton(AF_INET, "1.2.3.04", a) == 1 ? 1 :
 			     (inet_pton(AF_INET6, "::1.2.3.4", a) != 1)); }],
         [AC_MSG_RESULT(yes)
         ISC_PLATFORM_NEEDPTON="#undef ISC_PLATFORM_NEEDPTON"],
@@ -1998,11 +1998,11 @@ AC_SUBST(PDFJADETEX)
 #   NOM_PATH_FILE(VARIABLE, FILENAME, DIRECTORIES)
 #
 # If the file FILENAME is found in one of the DIRECTORIES, the shell
-# variable VARIABLE is defined to its absolute pathname.  Otherwise, 
+# variable VARIABLE is defined to its absolute pathname.  Otherwise,
 # it is set to FILENAME, with no directory prefix (that's not terribly
 # useful, but looks less confusing in substitutions than leaving it
 # empty).  The variable VARIABLE will be substituted into output files.
-# 
+#
 
 AC_DEFUN(NOM_PATH_FILE, [
 $1=""
@@ -2040,7 +2040,7 @@ NOM_PATH_FILE(SGMLCATALOG, catalog, $sgmltrees)
 #
 
 stylepath=""
-for d in $sgmltrees 
+for d in $sgmltrees
 do
 	for s in docbook/dsssl/modular dsssl/docbook
 	do
