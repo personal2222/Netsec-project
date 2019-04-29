@@ -9,7 +9,7 @@ The code for the proxy is in the Webby directory
 * launch web server from project directory with `npm start`
 * launch proxy server from project directory with `node server/proxy.js`
 * use firefox browser and manually set proxy configuration to localhost:8080 for all protocols
-* run URL_Classify.py in the Classifier2 directory. Make sure the require python packages below are installed.
+* run URL_Classify.py in the Classifier2 directory. Make sure the required python packages below are installed.
 * visit the interweb
 
 # Classification Instructions
